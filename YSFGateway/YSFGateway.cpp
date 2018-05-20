@@ -546,26 +546,12 @@ void CYSFGateway::processWiresX(const unsigned char* buffer, unsigned char fi, u
 		break;
 	case WXS_DISCONNECT:
 		if (m_linkType == LINK_YSF) {
-			LogMessage("Disconnect has been requested by %10.10s", buffer + 14U);
+			LogMessage("(ANULADO) Disconnect has been requested by %10.10s", buffer + 14U);
 
-			m_ysfNetwork->writeUnlink(3U);
-			m_ysfNetwork->clearDestination();
-
-			m_current.clear();
-			m_inactivityTimer.stop();
-			m_lostTimer.stop();
-			m_linkType = LINK_NONE;
 		}
 		if (m_linkType == LINK_FCS) {
-			LogMessage("Disconnect has been requested by %10.10s", buffer + 14U);
+			LogMessage("(ANULADO) Disconnect has been requested by %10.10s", buffer + 14U);
 
-			m_fcsNetwork->writeUnlink(3U);
-			m_fcsNetwork->clearDestination();
-
-			m_current.clear();
-			m_inactivityTimer.stop();
-			m_lostTimer.stop();
-			m_linkType = LINK_NONE;
 		}
 		break;
 	default:
